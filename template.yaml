@@ -1,0 +1,10 @@
+.format-template:
+  rules:
+    - if: $CI_COMMIT_BRANCH
+  stage: test
+  image: $GOLANG_IMAGE
+  allow_failure: false
+  needs: [ ]
+  script:
+    - diff -u <(echo -n) <(gofmt -d ./)
+
